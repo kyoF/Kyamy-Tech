@@ -3,5 +3,52 @@
     カート一覧
 {% endblock %}
 {% block body %}
-    <h3>カート</h3>
+    <style>
+        table{
+            text-align: center;
+            }
+        h2{
+            text-align: center;
+        }
+        h3{
+            background-color: lightgreen;
+        }
+        
+    </style>
+    <h3>カート一覧</h3>
+    <table border="2">
+        <tr>
+            <th>カテゴリ</th>
+            <th>タイトル</th>
+            <th>詳細はこちら</th>
+            <th>カートから削除</th>
+        </tr>
+    <tr>
+        <th>カテゴリ</th>
+        <th>本のタイトルタイトル</th>
+        <th><button>詳細</button></th>
+        <th><button>削除</button></th>
+    </tr>
+    <tr>
+        <th>カテゴリ</th>
+        <th>本のタイトルタイトルタイトル</th>
+        <th><button>詳細</button></th>
+        <th><button>削除</button></th>
+    </tr>
+    <tr>
+        <th>カテゴリ</th>
+        <th>本</th>
+        <th><button>詳細</button></th>
+        <th><button>削除</button></th>
+    </tr>
+    <tr>
+        <th>カテゴリ</th>
+        <th>本のタイトル</th>
+        <th><button>詳細</button></th>
+        <th><button>削除</button></th>
+    </tr>
+    </table>
+
+    <h2><button>借りる！</button></h2>
+
 {% endblock %}

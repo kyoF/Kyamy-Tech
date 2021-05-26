@@ -4,11 +4,57 @@ TOP
 {% endblock %}
 
 {% block body %}
+    <style>
+        h3{
+            background-color: lightgreen;
+        }
+        
+        p {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin: 60px auto 40px;
+        }
+        table {
+        margin: 20px auto;
+        }
+        .top3 th {
+        background: #e9727e;
+        border: solid 1px #ccc;
+        color: #fff;
+        padding: 10px;
+        }
+        .top3 td {
+        border: solid 1px #ccc;
+        padding: 10px;
+        }
+        
+        @media screen and (max-width: 640px) {
+        .last td:last-child {
+            border-bottom: solid 1px #ccc;
+            width: 100%;
+        }
+        .top3 {
+            width: 80%;
+        }
+        .top3 th,
+        .top3 td {
+        border-bottom: none;
+        display: block;
+            width: 100%;
+        }
+        }
+        h2{
+            text-align: center;
+        }
+        
+    </style>
+
     <h3>ようこそXXさん！</h3>
     <a href="{{url_for('search.window')}}">検索画面へGO!</a>
     <h2>本日のランキング～xx学部編～</h2>
 
-    <table>
+    <table class="top3">
     <tr>
         <th>順位</th>
         <th>カテゴリ</th>

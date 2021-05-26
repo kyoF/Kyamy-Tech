@@ -1,1 +1,3 @@
-docs/.gitkeep
+.gitkeep
+__pycache__/
+migrations/

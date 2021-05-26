@@ -34,3 +34,13 @@ def logout():
     session.pop('logged_in', None)
     print('ログアウトしました。')
     return redirect(url_for('login'))
+
+@app.route('/top')
+@login_check
+def top():
+    return render_template('top.html')
+
+@app.route('/cart')
+@login_check
+def cart():
+    return render_template('carts/index.html')

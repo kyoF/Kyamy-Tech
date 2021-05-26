@@ -11,4 +11,4 @@ app.config.from_object('admin.config')
 app.config.from_object('lib.config')
 
 init_db(app)
-import admin.views
+from admin.views import login 

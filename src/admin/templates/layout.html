@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% blockend %}</title>
+</head>
+    <body>
+        <header>
+            <div>
+                <h3>
+                <a href="{{url_for('top')}}">TOP</button>
+                <a href="{{url_for('cart')}}">カート</button>
+                {% if session.get('logged_in'): %}
+                    <a href="{{url_for('logout')}}">ログアウト</a>
+                {% else %}
+                    <a href="{{url_for('login')}}">ログイン</a>
+                {% endif %}    
+                </h3>
+            </div>
+        </header>
+        {% block body %}{% blockend %}    
+    </body>
+</html>

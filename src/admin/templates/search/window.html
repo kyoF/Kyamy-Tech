@@ -2,9 +2,18 @@
 {% block title %}
     検索窓
 {% endblock %}
-
 {% block body %}
-    <form action="{{url_for('search.search_result')}}" method="POST">
-        <input type="text">
-    </form>
+<form action="{{url_for('search.search_result')}}" method="POST">
+    <input type="text" placeholder="キーワード" class="window">
+    <select name="category" size="1" class="category">
+        <option>教育</option>
+        <option>論文</option>
+        <option>サイエンス</option>
+        <option>SF</option>
+        <option>ホラー</option>
+        <option>恋愛（哲学）</option>
+        <option>ラノベ</option>
+    </select>
+<input type="button" value="検索">
+</form>
 {% endblock %}

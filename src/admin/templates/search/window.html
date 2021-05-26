@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}
+    検索窓
+{% endblock %}
+
+{% block body %}
+    <form action="{{url_for('search.search_result')}}" method="POST">
+        <input type="text">
+    </form>
+{% endblock %}

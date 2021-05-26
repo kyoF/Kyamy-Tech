@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>ログイン画面</title>  
-</head>
-<body>
-    <h1>ログイン</h1>
-    <hr>
-    <div align = "center">
-        <table border="0">
-            <tr>
-                <th>
-                    ユーザID
-                </th>
-                <td>
-                    <input type="text" name="id" value="" size="24">
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    パスワード
-                </th>
-                <td>
-                    <input type="text" name="password" value="" size="24">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="ログイン">
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>ログイン画面</title>  
+    </head>
+    <body>
+        <form action="{{url_for('login')}}" method="POSt">
+
+            <h1>ログイン</h1>
+            <hr>
+            <div>
+                <table border="0">
+                    <tr>
+                        <th>
+                            ユーザID
+                        </th>
+                        <td>
+                            <input type="text" name="id" value="" size="24">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            パスワード
+                        </th>
+                        <td>
+                            <input type="text" name="password" value="" size="24">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="ログイン">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </body>
 </html>

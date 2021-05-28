@@ -26,7 +26,7 @@ def login():
             session['logged_in'] = True
             flash('ログインしました。', 'success')
             return redirect(url_for('top'))
-    return render_template('login.html')
+    return render_template('login/login.html')
 
 #ログアウト
 @app.route('/logout')
@@ -39,8 +39,3 @@ def logout():
 @login_check
 def top():
     return render_template('top.html')
-
-@app.route('/cart')
-@login_check
-def cart():
-    return render_template('carts/index.html')

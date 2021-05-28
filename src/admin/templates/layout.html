@@ -11,7 +11,7 @@
             <div>
                 <h3>
                 <a href="{{url_for('top')}}">TOP</button>
-                <a href="{{url_for('cart')}}">カート</button>
+                <a href="{{url_for('carts.cart')}}">カート</button>
                 {% if session.get('logged_in'): %}
                     <a href="{{url_for('logout')}}">ログアウト</a>
                 {% else %}

@@ -11,7 +11,8 @@ search = Blueprint('search', __name__)
 def window():
     return render_template('search/window.html')
 
-@search.route('/result', methods=['POST'])
+# @search.route('/result', methods=['POST'])
+@search.route('/result')
 @login_check
 def search_result():
     return render_template('search/result.html')

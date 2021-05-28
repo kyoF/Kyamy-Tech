@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>管理者画面</title>
+        <style>
+            th {
+                background-color: lightgreen;
+            }
+            body button {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>管理者画面</h3>
+        <form action="" method="POST">
+            <table border="1">
+            　  <tr>
+                    <th>id</th>
+                    <th>タイトル</th>
+                    <th>著者</th>
+                    <th>カテゴリー</th>
+                    <th>経済学部</th>
+                    <th>法学部</th>
+                    <th>理学部</th>
+                    <th>工学部</th>
+                    <th>文学部</th>
+                    <th>医学部</th>
+                </tr>
+                {% for book_info in admin_book_info %}
+                    <tr>
+                        <td>{{ book_info.id }}</td>
+                        <td>{{ book_info.title }}</td>
+                        <td>{{ book_info.name }}</td>
+                        <td>{{ book_info.category }}</td>
+                        <td>{{ book_info.keizai }}</td>
+                        <td>{{ book_info.hougaku }}</td>
+                        <td>{{ book_info.rigaku }}</td>
+                        <td>{{ book_info.kougaku }}</td>
+                        <td>{{ book_info.bungaku }}</td>
+                        <td>{{ book_info.igaku }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </body>
+</html>

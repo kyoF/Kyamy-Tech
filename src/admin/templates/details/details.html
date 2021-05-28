@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}
+    詳細
+{% endblock %}
+{% block body %}
+<h3>詳細</h3>
+    <table border="3px">
+        {% if book_info %}
+        <tr>
+            <th>タイトル</th><td>{{ book_info.title }}</td>
+        </tr>
+        <tr>
+            <th>著者</th><td>{{ book_info.name }}</td>
+        </tr>
+        <tr>
+            <th>カテゴリー</th><td>{{ book_info.category }}</td>
+        </tr>
+        <tr>
+            <th>本の場所</th><td>{{ book_info.place }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    <br>
+    <form action="" method="POST">
+        <div><button>カートに追加</button></div>
+    </form>
+</form>
+{% endblock %}

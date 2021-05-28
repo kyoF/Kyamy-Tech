@@ -4,17 +4,17 @@
 {% endblock %}
 {% block body %}
 <form action="{{url_for('search.search_result')}}" method="POST">
-    <a href="{{url_for('search.search_result')}}">test</a>
-    <input type="text" placeholder="キーワード" class="window">
-    <select name="category" size="1" class="category">
+    <input type="text" placeholder="キーワード" class="window" name="search_word">
+    <select size="1" class="category" name="search_category">
+        <option></option>
         <option>教育</option>
         <option>論文</option>
         <option>サイエンス</option>
         <option>SF</option>
         <option>ホラー</option>
-        <option>恋愛（哲学）</option>
+        <option>恋愛</option>
         <option>ラノベ</option>
     </select>
-    <input type="button" value="検索">
+    <button type="submit">検索</button>
 </form>
 {% endblock %}

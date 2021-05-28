@@ -11,30 +11,14 @@
             <th>タイトル</th>
             <th>著者</th>
             <th>詳細</th>
-        </tr>        
-        <tr>
-            <th>SF</th>
-            <th>ハリーポッター</th>
-            <th>J.K.ろーりんぐ</th>
-            <th><a href="">詳細</a></th>
         </tr>
+        {% for category in categories %}   
         <tr>
-            <th>恋愛（哲学）</th>
-            <th>ガラスの仮面</th>
-            <th>美内すずえ</th>
-            <th><a href="">詳細</a></th>
+            <th>{{ category.category }}</th>
+            <th>{{ category.title }}</th>
+            <th>{{ category.name }}</th>
+            <th>{{ category.place }}</th>
         </tr>
-        <tr>
-            <th>論文</th>
-            <th>超音波定在波を用いた液滴燃料の微細化</th>
-            <th>山岸裕太</th>
-            <th><a href="">詳細</a></th>
-        </tr>
-        <tr>
-            <th>ラノベ</th>
-            <th>Re.ゼロから始める異世界生活</th>
-            <th>長月達平</th>
-            <th><a href="">詳細</a></th>
-        </tr>
+        {% endfor %}
     </table>
 {% endblock %}

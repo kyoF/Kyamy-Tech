@@ -18,11 +18,12 @@
         <tr>
             <th>本の場所</th><td>{{ book_info.place }}</td>
         </tr>
-        {% endif %}
     </table>
-    <br>
-    <form action="" method="POST">
-        <div><button>カートに追加</button></div>
-    </form>
-</form>
+        <br>
+        <form action="{{url_for('carts.create')}}" method="POST">
+            <input type="hidden" value="{{ book_info.id }}" name="book_id">
+            <button type="submit">カートに追加</button>
+        </form>
+        {% endif %}
+
 {% endblock %}

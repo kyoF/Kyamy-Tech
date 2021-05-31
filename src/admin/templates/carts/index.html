@@ -51,8 +51,20 @@
         input[type="checkbox"]:checked + #popup{
         display:block;
         }
-
     </style>
+
+    <script>
+        function show_popup(){
+                if(window.confirm('よろしいですか？')){
+                    location.href = "{{url_for('carts.insert')}}";
+                }
+                else{
+                    window.alert('キャンセルされました'); // 警告ダイアログを表示
+                }
+                alert('借りました');
+            }
+    </script>
+
     <h3>カート一覧</h3>
     <table border="2">
         <thead>
@@ -66,13 +78,12 @@
         <tbody>
             {% if cart_details %}
                 {% for cart_detail in cart_details: %}
-                    {% set book=cart_detail.get('book') %}
                     <tr>
-                        <td>{{ book.category }}</td>
-                        <td>{{ book.title }}</td>
-                        <td>{{ book.name }}</td>
+                        <td>{{ cart_detail.category }}</td>
+                        <td>{{ cart_detail.title }}</td>
+                        <td>{{ cart_detail.name }}</td>
                         <td>
-                            <form action="{{url_for('carts.delete',book_id=book.id)}}" method="POST">
+                            <form action="{{url_for('carts.delete',book_id=cart_detail.id)}}" method="POST">
                                 <button type="submit">削除</button>
                             </form>
                         </td>
@@ -92,16 +103,8 @@
 
     <h2>
         <label>
-            <span>借りる！</span>
-            <input type="checkbox" name="checkbox">
-          <div id="popup">
-              ここに本の情報
-              <br>
-              <button>確定</button>
-              <button>キャンセル</button>
-              </br>
-          </div>
-          </label>
+            <span type="submit" onClick="show_popup()">借りる</span>
+        </label>
     </h2>
 
 {% endblock %}

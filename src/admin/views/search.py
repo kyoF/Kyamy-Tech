@@ -20,12 +20,15 @@ def search_result():
     search_category = request.form.get('search_category')
     search_word = request.form.get('search_word')
 
-    if not search_category:
+    if not (search_category and search_word):
+        categories = Book.query.order_by(Book.category.desc())
+
+    elif not search_category:
         categories = Book.query.order_by(Book.category.desc()).filter(Book.title.like(f'%\\{search_word}%'))
 
     elif not search_word:
         categories = Book.query.order_by(Book.category.desc()).filter(Book.category==search_category)
-        
+
     else:
         categories = Book.query.order_by(Book.category.desc()).filter(Book.category==search_category).filter(Book.title.like(f'%\\{search_word}%'))
 

@@ -29,6 +29,7 @@ def login():
                 flash('パスワードが違います。', 'error')
             else:
                 session['logged_in'] = True
+                session['user_id'] = user_info.id
                 session['name'] = user_info.name
                 session['underguraduate'] = user_info.underguraduate
                 flash('ログインしました。', 'success')

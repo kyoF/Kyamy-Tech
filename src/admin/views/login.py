@@ -22,18 +22,20 @@ def login_check(view):
 def login():
     if request.method =='POST':
         try:
-            user_info = User.query.get(int(request.form.get('user_id')))
+            user_id = request.form.get('user_id')
+            user_info = User.query.filter_by(user_id = user_id).first()
+            print(type(user_info))
             if user_info is None:
                 flash('ユーザIDが違います。', 'error')
             elif not user_info.password == request.form.get('password'):
                 flash('パスワードが違います。', 'error')
             else:
                 session['logged_in'] = True
-                session['user_id'] = user_info.id
+                session['user_id'] = user_info.user_id
                 session['name'] = user_info.name
-                session['underguraduate'] = user_info.underguraduate
+                session['undergraduate'] = user_info.undergraduate
                 flash('ログインしました。', 'success')
-                return top(session.get('name'), session.get('underguraduate'))
+                return top(session.get('name'), session.get('undergraduate'))
         except ValueError:
             flash('適切なユーザIDを入力してください', 'error')
     return render_template('login/login.html')

@@ -55,14 +55,14 @@
 
     <script>
         function show_popup(){
-                if(window.confirm('よろしいですか？')){
-                    location.href = "{{url_for('carts.insert')}}";
-                }
-                else{
-                    window.alert('キャンセルされました'); // 警告ダイアログを表示
-                }
-                alert('借りました');
+            if(window.confirm('よろしいですか？')){
+                location.href = "{{url_for('carts.insert')}}";
             }
+            else{
+                window.alert('キャンセルされました'); // 警告ダイアログを表示
+            }
+            alert('借りました');
+        }
     </script>
 
     <h3>カート一覧</h3>

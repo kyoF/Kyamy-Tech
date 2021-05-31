@@ -12,7 +12,7 @@ def sign_up():
 
 #新規登録処理
 
-@signup.route('/signup', methods=['POST'])
+@signup.route('/conmplete', methods=['POST'])
 def create():
     user = User(
         undergraduate=request.form.get('underguraduate'),
@@ -27,11 +27,13 @@ def create():
         db.session.commit()
     except:
         flash('入力した情報を再度確認してください', 'error')
-        return redirect(url_for('signup'))
+        # return redirect(url_for('sign_up'))
+        return render_template('signup/signup.html')
+
 
     flash('アカウントが作成されました', 'success')
-    return redirect(url_for('signup'))
+    # return redirect(url_for('signup'))
 
     
 
-    return render_template('login.html')    
+    return render_template('login/login.html')    

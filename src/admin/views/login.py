@@ -21,15 +21,20 @@ def login_check(view):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method =='POST':
-        user_info = User.query.get(int(request.form.get('user_id')))
-        if user_info is None:
-            flash('ユーザIDが違います。', 'error')
-        elif not user_info.password == request.form.get('password'):
-            flash('パスワードが違います。', 'error')
-        else:
-            session['logged_in'] = True
-            flash('ログインしました。', 'success')
-            return top(user_info.underguraduate, user_info.name)
+        try:
+            user_info = User.query.get(int(request.form.get('user_id')))
+            if user_info is None:
+                flash('ユーザIDが違います。', 'error')
+            elif not user_info.password == request.form.get('password'):
+                flash('パスワードが違います。', 'error')
+            else:
+                session['logged_in'] = True
+                session['name'] = user_info.name
+                session['underguraduate'] = user_info.underguraduate
+                flash('ログインしました。', 'success')
+                return top(session.get('name'), session.get('underguraduate'))
+        except ValueError:
+            flash('適切なユーザIDを入力してください', 'error')
     return render_template('login/login.html')
 
 #ログアウト
@@ -41,7 +46,9 @@ def logout():
 
 @app.route('/top')
 @login_check
-def top(underguraduate, name):
+def top(name, underguraduate):
+    global gakubu_search_result 
+    gakubu_search_result = ''
     if underguraduate == '経済学部':
         gakubu_search_result = Book.query.order_by(Book.keizai.desc()).limit(10).offset(0).all()
     elif underguraduate == '法学部':
@@ -54,5 +61,9 @@ def top(underguraduate, name):
         gakubu_search_result = Book.query.order_by(Book.bungaku.desc()).limit(10).offset(0).all()
     else:
         gakubu_search_result = Book.query.order_by(Book.igaku.desc()).limit(10).offset(0).all()
-
     return render_template('top.html', name=name, underguraduate=underguraduate, ranking=gakubu_search_result)
+
+@app.route('/return_top')
+@login_check
+def return_top():
+    return render_template('top.html', name=session.get('name'), underguraduate=session.get('underguraduate'), ranking=gakubu_search_result)

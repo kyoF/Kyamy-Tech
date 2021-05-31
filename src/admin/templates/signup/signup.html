@@ -7,40 +7,53 @@
     <form action="{{url_for('signup.create')}}" method="POST"></form>
         <h1>新規登録</h1>
         <hr>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            {% if category == 'success' %}
+                <div style="background-color: #98fb98;">{{ message }}</div>
+            {% elif category == 'error' %}
+                <div style="background-color: #ffc0cb;">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
         <div align = "center">
             <table border="0">
-        <form action="#" method="POST">
-            <p>学部：<br>
-                <select name="undergraduate" size="1" class="undergraduate">
-                    <option>経済学部</option>
-                    <option>法学部</option>
-                    <option>文学部</option>
-                    <option>理学部</option>
-                    <option>工学部</option>
-                    <option>医学部</option>
-                </select></p>
-            <p>学年：<br>
-                <select name="graduate" size="1" class="graduate">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                </select></p>
-    	    <p>お名前：<br>
-	            <input type="text" name="name" value="" size="20"></p>
-	        <p>ユーザID：<br>
-                <input type="text" name="user_id" value="" size="20"></p>
-            <p>パスワード：<br>
-                <input type="password" name="password" value="" size="20"></p>
+                <p>学部：<br>
+                    <select name="undergraduate" size="1" class="undergraduate">
+                        <option>経済学部</option>
+                        <option>法学部</option>
+                        <option>文学部</option>
+                        <option>理学部</option>
+                        <option>工学部</option>
+                        <option>医学部</option>
+                    </select>
+                </p>
+                <p>学年：<br>
+                    <select name="graduate" size="1" class="graduate">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </p>
+                <p>お名前：<br>
+                    <input type="text" name="name" value="" size="20">
+                </p>
+                <p>ユーザID：<br>
+                    <input type="text" name="user_id" value="" size="20">
+                </p>
+                <p>パスワード：<br>
+                    <input type="password" name="password" value="" size="20">
+                </p>
                 <tr>
                     <td colspan="2">
                         <button type="submit">送信</button>
                     </td>
                 </tr>
-        </form>
+            </table>
+        </div>
+    </form>
 </body>
 </html>

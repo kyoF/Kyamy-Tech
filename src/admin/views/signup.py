@@ -23,15 +23,17 @@ def create():
         graduate=request.form.get('graduate'),
         undergraduate=request.form.get('undergraduate'),
     )
-    try:
-        db.session.add(user)    #不備があった際の例外処理
-        db.session.commit()
-    except:
-        flash('入力した情報を再度確認してください', 'error')
-        # return redirect(url_for('sign_up'))
+    test =  User.query.filter(User.user_id == user.user_id).all()
+    print(test)
+    if User.query.filter(User.user_id == user.user_id).all():
+        flash('これはすでに登録されているIDです', 'error')
         return render_template('signup/signup.html')
-
-
-    flash('アカウントが作成されました', 'success')
-    # return redirect(url_for('signup'))
-    return render_template('login/login.html')    
+    else:
+        try:
+            db.session.add(user)    #不備があった際の例外処理
+            db.session.commit()
+        except:
+            flash('入力した情報を再度確認してください', 'error')
+            return render_template('signup/signup.html')
+        flash('アカウントが作成されました', 'success')
+        return render_template('login/login.html')    

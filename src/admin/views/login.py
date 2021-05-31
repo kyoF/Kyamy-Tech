@@ -35,6 +35,7 @@ def login():
                 session['name'] = user_info.name
                 session['undergraduate'] = user_info.undergraduate
                 flash('ログインしました。', 'success')
+                flash('ようこそ'+session['name']+'さん！', 'success')
                 return top(session.get('name'), session.get('undergraduate'))
         except ValueError:
             flash('適切なユーザIDを入力してください', 'error')

@@ -3,18 +3,20 @@
     検索窓
 {% endblock %}
 {% block body %}
-<form action="{{url_for('search.search_result')}}" method="POST">
-    <input type="text" placeholder="キーワード" class="window" name="search_word">
-    <select size="1" class="category" name="search_category">
-        <option></option>
-        <option>教育</option>
-        <option>論文</option>
-        <option>サイエンス</option>
-        <option>SF</option>
-        <option>ホラー</option>
-        <option>恋愛</option>
-        <option>ラノベ</option>
-    </select>
-    <button type="submit">検索</button>
-</form>
+<div align = "center">
+    <form action="{{url_for('search.search_result')}}" method="POST">
+        <input type="text" placeholder="キーワード" class="window" name="search_word">
+        <select size="1" class="category" name="search_category">
+            <option></option>
+            <option>教育</option>
+            <option>論文</option>
+            <option>サイエンス</option>
+            <option>SF</option>
+            <option>ホラー</option>
+            <option>恋愛</option>
+            <option>ラノベ</option>
+        </select>
+        <button type="submit">検索</button>
+    </form>
+</div>
 {% endblock %}

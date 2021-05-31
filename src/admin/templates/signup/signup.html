@@ -4,18 +4,18 @@
     <title>新規登録</title>  
 </head>
 <body>
-    <form action="{{url_for('signup.create')}}" method="POST"></form>
-        <h1>新規登録</h1>
-        <hr>
-        {% for category, message in get_flashed_messages(with_categories=true) %}
-            {% if category == 'success' %}
-                <div style="background-color: #98fb98;">{{ message }}</div>
-            {% elif category == 'error' %}
-                <div style="background-color: #ffc0cb;">{{ message }}</div>
-            {% endif %}
-        {% endfor %}
-        <div align = "center">
-            <table border="0">
+    <h1>新規登録</h1>
+    <hr>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    {% if category == 'success' %}
+    <div style="background-color: #98fb98;">{{ message }}</div>
+    {% elif category == 'error' %}
+    <div style="background-color: #ffc0cb;">{{ message }}</div>
+    {% endif %}
+    {% endfor %}
+    <div align = "center">
+        <form action="{{url_for('signup.create')}}" method="POST">
+        <table border="0">
                 <p>学部：<br>
                     <select name="undergraduate" size="1" class="undergraduate">
                         <option>経済学部</option>
@@ -52,8 +52,8 @@
                         <button type="submit">送信</button>
                     </td>
                 </tr>
+            </form>
             </table>
         </div>
-    </form>
 </body>
 </html>

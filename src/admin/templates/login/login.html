@@ -33,9 +33,16 @@
                 background: #b0ca71;/*背景色*/
                 border-radius: 4px;/*角の丸み*/
                 margin-top: 20px;
+                text-align: center;
                 }
                 .login:hover{
                 cursor:pointer;
+                }
+                .login_tr{
+                    text-align: center;
+                }
+                .new{
+                    text-align: end;
                 }
             </style>
             <h2 align = "center">ログイン</h2>
@@ -64,14 +71,14 @@
                             <input type="password" name="password" value="" size="24">
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="login_tr">
                         <td colspan="2">
                             <input type="submit" value="ログイン" class="login">
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="new">
                         <td colspan="2">
-                            <a href="{{url_for('signup.sign_up')}}" >新規登録</a>
+                            <a href="{{url_for('signup.sign_up')}}" style="text-decoration: none;" >新規登録</a>
                         </td>
                     </tr>
                 </table>

@@ -81,8 +81,14 @@ TOP
             background-color: rgb(247, 188, 188);
             font-weight: bold;
         }
-        .title{
-            width: 60%;
+        .category{
+            width: 10%;
+        }
+        .name{
+            width:20%;
+        }
+        .detail_td{
+            width: 10%;
         }
     </style>
     <a href="{{url_for('search.window')}}" class="window">検索画面へGO!</a>
@@ -100,7 +106,7 @@ TOP
     
                 {% if loop.index ==1: %}
                     <tr class="one">
-                        <td class="one_index"><i class="fas fa-crown"></i>
+                        <br><td class="one_index"><i class="fas fa-crown"></i></br>
                 {% elif loop.index ==2: %}
                     <tr class="two">
                         <td class="two_index">
@@ -113,11 +119,11 @@ TOP
                         <td class="normal_index">
                 {% endif %}
                     {{ loop.index }}</td>
-                <td>{{ row.category }}</td>
+                <td class="category">{{ row.category }}</td>
                 <td class="title">{{ row.title }}</td>
-                <td>{{ row.name }}</td>
+                <td class="name">{{ row.name }}</td>
                 <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
-                    <td><button value="submit" class="detail">詳細</button></td>
+                    <td class="detail_td"><button value="submit" class="detail">詳細</button></td>
                 </form>
                 </tr>
                 <tr>

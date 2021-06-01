@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" http-equiv="refresh">
         <title>管理者画面</title>
         <style>
             table{
@@ -21,40 +21,74 @@
             h3{
                 text-align: center;
             }
-
+            .sort_box{
+                margin-left: 18%;
+                font-size: 110%;
+            }
+            h4{
+                text-align: center;
+                background-color:#b0ca71 ;
+            }
         </style>
     </head>
     <body>
         <h3>管理者画面</h3>
-        <form action="" method="POST">
-            <table border="1">
-            　  <tr>
-                    <th>id</th>
-                    <th>タイトル</th>
-                    <th>著者</th>
-                    <th>カテゴリ</th>
-                    <th>経済学部</th>
-                    <th>法学部</th>
-                    <th>理学部</th>
-                    <th>工学部</th>
-                    <th>文学部</th>
-                    <th>医学部</th>
-                </tr>
-                {% for book_info in admin_book_info %}
-                    <tr>
-                        <td>{{ book_info.id }}</td>
-                        <td>{{ book_info.title }}</td>
-                        <td>{{ book_info.name }}</td>
-                        <td>{{ book_info.category }}</td>
-                        <td>{{ book_info.keizai }}</td>
-                        <td>{{ book_info.hougaku }}</td>
-                        <td>{{ book_info.rigaku }}</td>
-                        <td>{{ book_info.kougaku }}</td>
-                        <td>{{ book_info.bungaku }}</td>
-                        <td>{{ book_info.igaku }}</td>
+        <h4>
+            <script>
+                var today=new Date(); 
+                var year = today.getFullYear();
+                var month = today.getMonth()+1;
+                var week = today.getDay();
+                var day = today.getDate();
+                var week_ja= new Array("日","月","火","水","木","金","土");
+                document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+                var time= new Date();
+                var hour = time.getHours();
+                var minute = time.getMinutes();
+
+                document.write(hour+"時",+minute+"分");
+            </script>
+            時点
+        </h4>
+        
+        <form action="{{url_for('admin.show_admin_window')}}" method="POST">
+                <select size="1" class="sort_box" name="sort_category">
+                <option>id順</option>
+                <option>経済学部人気順</option>
+                <option>法学部人気順</option>
+                <option>理学部人気順</option>
+                <option>工学部人気順</option>
+                <option>文学部人気順</option>
+                <option>医学部人気順</option>
+                </select>
+                <table border="1">
+                　  <tr>
+                        <th>id</th>
+                        <th>タイトル</th>
+                        <th>著者</th>
+                        <th>カテゴリ</th>
+                        <th>経済学部</th>
+                        <th>法学部</th>
+                        <th>理学部</th>
+                        <th>工学部</th>
+                        <th>文学部</th>
+                        <th>医学部</th>
                     </tr>
-                {% endfor %}
-            </table>
-        </form>
+                        {% for book_info in admin_book_info %}
+                            <tr>
+                                <td>{{ book_info.id }}</td>
+                                <td>{{ book_info.title }}</td>
+                                <td>{{ book_info.name }}</td>
+                                <td>{{ book_info.category }}</td>
+                                <td>{{ book_info.keizai }}</td>
+                                <td>{{ book_info.hougaku }}</td>
+                                <td>{{ book_info.rigaku }}</td>
+                                <td>{{ book_info.kougaku }}</td>
+                                <td>{{ book_info.bungaku }}</td>
+                                <td>{{ book_info.igaku }}</td>
+                            </tr>
+                        {% endfor %}
+                </table>
+        </form>     
     </body>
 </html>

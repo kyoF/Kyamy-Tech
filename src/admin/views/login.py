@@ -67,6 +67,7 @@ def top(name, undergraduate):
         and h.datetime between current_date and current_date + integer '30'  \
         group by b.id, b.title, b.name, b.category  \
         order by count(h.*) desc \
+        limit (10) offset (0); \
     ")
     gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
     return render_template('top.html', name=name, undergraduate=undergraduate, ranking=gakubu_search_result)

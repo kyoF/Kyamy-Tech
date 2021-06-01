@@ -2,7 +2,7 @@ from flask import render_template, request, url_for, session, redirect, flash, B
 
 import datetime
 
-from lib.models import Book, History
+from lib.models import Book, History, User
 
 from lib.db import db
 
@@ -29,6 +29,7 @@ def index():
     return render_template('carts/index.html',cart_details=cart_details)
 
 @cart.route('/create',methods=['POST'])
+@login_check
 def create():
     book_id=request.form.get('book_id') or ""
     cart=session.get('cart')
@@ -41,6 +42,7 @@ def create():
     return redirect(url_for('carts.index'))
 
 @cart.route('/<string:book_id>/delete',methods=['POST'])
+@login_check
 def delete(book_id):
     if book_id=='all':
         session.pop('cart',None)
@@ -52,18 +54,37 @@ def delete(book_id):
     return redirect(url_for('carts.index'))
 
 @cart.route('/insert')
+@login_check
 def insert():
     carts = session.get('cart')
-    user_id = session.get('user_id')
+    user_id = session.get('user_table_id')
     for book_id, title in carts.items():
+        
         if book_id and title:
+            
             history = History(
                 book_id = book_id,
                 user_id = user_id,
                 datetime = datetime.date.today()
             )
+
+            undergraduate = User.query.get(user_id).undergraduate
+            if undergraduate == '経済学部':
+                Book.query.get(book_id).keizai += 1
+            elif undergraduate == '法学部':
+                Book.query.get(book_id).hougaku += 1
+            elif undergraduate == '理学部':
+                Book.query.get(book_id).rigaku += 1
+            elif undergraduate == '工学部':
+                Book.query.get(book_id).kougaku += 1
+            elif undergraduate == '文学部':
+                Book.query.get(book_id).bungaku += 1
+            elif undergraduate == '医学部':
+                Book.query.get(book_id).igaku += 1
+
             db.session.add(history)
             db.session.commit()
+
         else:
             flash('最初からやり直してください', 'error')
 

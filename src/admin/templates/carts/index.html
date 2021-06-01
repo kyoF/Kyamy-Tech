@@ -95,14 +95,21 @@
     </style>
 
     <script>
+        
         function show_popup(){
             if(window.confirm('よろしいですか？')){
                 location.href = "{{url_for('carts.insert')}}";
+                alert('借りました！')
             }
             else{
                 window.alert('キャンセルされました'); // 警告ダイアログを表示
             }
         }
+
+        function show_error_popup(){
+            window.alert('図書がありません');
+        }
+
     </script>
 
     <h3>カート一覧</h3>
@@ -143,7 +150,11 @@
 
     <h2>
         <label>
-            <span type="submit" onClick="show_popup()">借りる</span>
+            {% if cart_details %}
+                <span type="submit" onClick="show_popup()">借りる</span>
+            {% else %}
+                <span type="submit" onClick="show_error_popup()">借りる</span>
+            {% endif %}
         </label>
     </h2>
 

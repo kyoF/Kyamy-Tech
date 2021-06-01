@@ -33,6 +33,7 @@ def login():
                 flash('パスワードが違います。', 'error')
             else:
                 session['logged_in'] = True
+                session['user_table_id'] = user_info.id
                 session['user_id'] = user_info.user_id
                 session['name'] = user_info.name
                 session['undergraduate'] = user_info.undergraduate

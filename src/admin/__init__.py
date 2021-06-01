@@ -4,7 +4,7 @@ from flask import Flask
 from lib.db import init_db
 
 #Flaskを定義
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.config.from_object('admin.config')
 app.config.from_object('lib.config')

@@ -20,7 +20,7 @@ def search_result():
     search_category = request.form.get('search_category')
     search_word = request.form.get('search_word')
 
-    if not (search_category and search_word):
+    if not search_category and not search_word:
         categories = Book.query.order_by(Book.category.desc())
 
     elif not search_category:

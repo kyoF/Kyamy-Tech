@@ -6,10 +6,19 @@ from lib.models import Book, History
 
 from lib.db import db
 
+from .login import login_check
+
 cart = Blueprint('carts', __name__)
+
+# ログインチェック
+@cart.route('/')
+@login_check
+def check_cart():
+    return render_template('carts/index.html')
 
 # カート画面を表示
 @cart.route('/cart')
+@login_check
 def index():
     cart=session.get('cart')
     cart_details = list()

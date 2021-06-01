@@ -14,7 +14,9 @@ def sign_up():
 
 #新規登録処理
 
-@signup.route('/complete', methods=['POST'])
+
+
+@signup.route('/', methods=['POST'])
 def create():
     user = User(
         name=request.form.get('name'),
@@ -27,6 +29,15 @@ def create():
     print(test)
     if User.query.filter(User.user_id == user.user_id).all():
         flash('これはすでに登録されているIDです', 'error')
+        return render_template('signup/signup.html')
+    elif not user.name:
+        flash('名前を入力してください', 'error')
+        return render_template('signup/signup.html')
+    elif not user.user_id:
+        flash('ユーザIDを入力してください', 'error')
+        return render_template('signup/signup.html')
+    elif not user.password:
+        flash('パスワードを入力してください', 'error')
         return render_template('signup/signup.html')
     else:
         try:

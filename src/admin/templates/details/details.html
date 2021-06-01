@@ -3,14 +3,44 @@
     詳細
 {% endblock %}
 {% block body %}
+<style>
+    h3{
+        margin-left: 26%;
+    }
+    table{
+        margin: auto;
+        width:600px;
+    }
+    td{
+        text-align: center;
+    }
+    .cart{
+        display:block;
+        background-color:#82ae46;
+        color:#fff;
+        width:200px;
+        line-height:40px;
+        border-radius:4px;
+        text-align:center;
+        font-size: 20px;
+        font-weight: bold;
+        margin: auto;
+        }
+    .cart:hover{
+        cursor:pointer;
+        }
+    .title{
+        width: 30%;
+    }
+</style>
 <h3>詳細</h3>
     <table border="3px" bordercolor="#82ae46">
         {% if book_info %}
         <tr>
-            <th>タイトル</th><td>{{ book_info.title }}</td>
+            <th class="title">タイトル</th><td>{{ book_info.title }}</td>
         </tr>
         <tr>
-            <th>著者</th><td>{{ book_info.name }}</td>
+            <th >著者</th><td>{{ book_info.name }}</td>
         </tr>
         <tr>
             <th>カテゴリー</th><td>{{ book_info.category }}</td>
@@ -22,7 +52,7 @@
         <br>
         <form action="{{url_for('carts.create')}}" method="POST">
             <input type="hidden" value="{{ book_info.id }}" name="book_id">
-            <button type="submit">カートに追加</button>
+            <button type="submit" class="cart">カートに追加</button>
         </form>
         {% endif %}
 

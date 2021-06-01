@@ -20,7 +20,7 @@ def login_check(view):
     return inner
 
 #ログイン
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method =='POST':
         try:

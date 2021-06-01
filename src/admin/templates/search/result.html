@@ -4,6 +4,31 @@
 {% endblock %}
 
 {% block body %}
+<style>
+        table{
+            margin: auto;
+            width: 1000px;
+        }
+        .detail_width{
+            width: 7%;
+        }
+        .detail {
+        position: relative;
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: #FFF;
+        background: #b0ca71;/*背景色*/
+        border-radius: 4px;/*角の丸み*/
+        width: 100%;
+        }
+        .detail:hover{
+        cursor:pointer;
+        }
+        .name{
+            width:20%;
+        }
+</style>
     <h1>検索結果</h1>
     <table border="2" bordercolor="#82ae46">
         <tr class="table_head">
@@ -17,10 +42,10 @@
         <tr>
             <th>{{ category.category }}</th>
             <th>{{ category.title }}</th>
-            <th>{{ category.name }}</th>
+            <th class="name">{{ category.name }}</th>
             <th>{{ category.place }}</th>
             <form action="{{url_for('details.show_details', id=category.id)}}" method="POST">
-                <th><button value="submit">詳細</button></th>
+                <th class="detail_width"><button value="submit" class="detail">詳細</button></th>
             </form>
         </tr>
         {% endfor %}

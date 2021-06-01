@@ -5,18 +5,16 @@ TOP
 
 {% block body %}
     <style>
-        h3{
-            background-color: #b0ca71;
-        }
         .window{
             font-size: 150%;
             text-align: center;
         }
         table {
-        margin: 20px auto;
+        margin:auto;
+        width:1000px;
         }
         .rank th {
-        background-color: aquamarine;
+        background-color: #b0ca71;
         border: solid 1px #ccc;
         color: #fff;
         padding: 10px;
@@ -50,19 +48,17 @@ TOP
             padding: 0.25em 0.5em;
             text-decoration: none;
             color: #FFF;
-            background: #f7af6c;/*背景色*/
-            border-bottom: solid 2px #f7af6c;/*少し濃い目の色に*/
+            background: #b0ca71;/*背景色*/
             border-radius: 4px;/*角の丸み*/
-            box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
             width: 100%;
+            font-weight: bold;
         }
-        .detail:active {
-        border-bottom: solid 2px #fd9535;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+        .detail:hover{
+        cursor:pointer;
         }
         .one{
             background-color: rgb(243, 229, 150);
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bold;
         }
         .one_index{
@@ -73,7 +69,7 @@ TOP
         }
         .two{
             background-color: rgb(231, 229, 229);
-            font-size: 25px;
+            font-size: 17px;
             font-weight: bold;
         }
         .two_index{
@@ -83,8 +79,10 @@ TOP
         }
         .three{
             background-color: rgb(247, 188, 188);
-            font-size: 20px;
             font-weight: bold;
+        }
+        .title{
+            width: 60%;
         }
     </style>
     <a href="{{url_for('search.window')}}" class="window">検索画面へGO!</a>
@@ -102,7 +100,7 @@ TOP
     
                 {% if loop.index ==1: %}
                     <tr class="one">
-                        <td class="one_index">
+                        <td class="one_index"><i class="fas fa-crown"></i>
                 {% elif loop.index ==2: %}
                     <tr class="two">
                         <td class="two_index">
@@ -114,14 +112,14 @@ TOP
                     <tr class="normal">
                         <td class="normal_index">
                 {% endif %}
-                     {{ loop.index }}</td>
-                    <td>{{ row.category }}</td>
-                    <td>{{ row.title }}</td>
-                    <td>{{ row.name }}</td>
-                    <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
-                        <td><button value="submit" class="detail">詳細</button></td>
-                    </form>
-                    </tr>
+                    {{ loop.index }}</td>
+                <td>{{ row.category }}</td>
+                <td class="title">{{ row.title }}</td>
+                <td>{{ row.name }}</td>
+                <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
+                    <td><button value="submit" class="detail">詳細</button></td>
+                </form>
+                </tr>
                 <tr>
             {% endfor %}
     </table>

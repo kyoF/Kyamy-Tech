@@ -4,11 +4,51 @@
 {% endblock %}
 {% block body %}
     <style>
+           h3{
+        margin-left: 10%;
+        }
         table{
-            text-align: center;
+            margin: auto;
+            width: 1000px;
             }
-        h3{
-            background-color: lightgreen;
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+        .title{
+            width: 50%;
+        }
+        .category{
+            width:8%;
+        }
+        .name{
+            width:12%;
+        }
+        .delete{
+            width: 8%;
+        }
+        .delete_button {
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #b0ca71;/*背景色*/
+            border-radius: 4px;/*角の丸み*/
+        }
+        .all_delete_button{
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #b0ca71;/*背景色*/
+            border-radius: 4px;/*角の丸み*/
+        }
+        .all_delete{
+            width: 8%;
         }
         /*popup表示させたいコンテンツのレイアウトと位置*/
         #popup{
@@ -40,6 +80,7 @@
         line-height:40px;
         border-radius:4px;
         text-align:center;
+        margin-left: 74%;
         }
         label span:hover{
         cursor:pointer;
@@ -61,7 +102,6 @@
             else{
                 window.alert('キャンセルされました'); // 警告ダイアログを表示
             }
-            alert('借りました');
         }
     </script>
 
@@ -69,10 +109,10 @@
     <table border="2" bordercolor="#82ae46">
         <thead>
         <tr>
-            <th>カテゴリ</th>
-            <th>タイトル</th>
-            <th>著者</th>
-            <th>カートから削除</th>
+            <th class="category">カテゴリ</th>
+            <th class="title">タイトル</th>
+            <th class="name">著者</th>
+            <th class="delete">カートから削除</th>
         </tr>    
         </thead>
         <tbody>
@@ -82,18 +122,18 @@
                         <td>{{ cart_detail.category }}</td>
                         <td>{{ cart_detail.title }}</td>
                         <td>{{ cart_detail.name }}</td>
-                        <td>
+                        <td class="delete">
                             <form action="{{url_for('carts.delete',book_id=cart_detail.id)}}" method="POST">
-                                <button type="submit">削除</button>
+                                <button type="submit" class="delete_button">削除</button>
                             </form>
                         </td>
                     </tr>
                 {% endfor %}
                 <tr>
                     <td colspan="4"></td>
-                    <td>
+                    <td class="all_delete">
                         <form action="{{url_for('carts.delete',book_id='all')}}" method="POST">
-                            <button type="submit">全削除</button>
+                            <button type="submit" class="all_delete_button">全削除</button>
                         </form>
                     </td>
                 </tr>

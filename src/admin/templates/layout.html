@@ -23,7 +23,10 @@
             border-bottom: 3px solid #82ae46;/* 下の線 */
             color: #82ae46;/* フォント色 */
             text-align: center;/* テキストの位置 */
-            }
+        }
+        a{
+            text-decoration: none;
+        }
     </style>
 </head>
     <body>
@@ -33,9 +36,9 @@
                 <h3 class="layout">
                 {% for category, message in get_flashed_messages(with_categories=true) %}
                     {% if category == 'success' %}
-                        <div style="background-color: #b0ca71;">{{ message }}</div>
+                        <div style="background-color: #f8e58c;">{{ message }}</div>
                     {% elif category == 'error' %}
-                        <div style="background-color: ;">{{ message }}</div>
+                        <div style="background-color: #ffc0cb;">{{ message }}</div>
                     {% endif %}
                 {% endfor %}
                 <div align = "right">

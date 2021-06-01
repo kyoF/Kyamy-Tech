@@ -6,55 +6,91 @@ TOP
 {% block body %}
     <style>
         h3{
-            background-color: lightgreen;
+            background-color: #b0ca71;
         }
-        
-        p {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        margin: 60px auto 40px;
+        .window{
+            font-size: 150%;
+            text-align: center;
         }
         table {
         margin: 20px auto;
         }
-        .top3 th {
-        background: #e9727e;
+        .rank th {
+        background-color: aquamarine;
         border: solid 1px #ccc;
         color: #fff;
         padding: 10px;
         }
-        .top3 td {
+        .rank td {
         border: solid 1px #ccc;
         padding: 10px;
+        text-align: center;
         }
-        
+
         @media screen and (max-width: 640px) {
         .last td:last-child {
             border-bottom: solid 1px #ccc;
-            width: 100%;
         }
-        .top3 {
+        .rank {
             width: 80%;
+            
         }
-        .top3 th,
-        .top3 td {
+        .rank th,
+        .rank td {
         border-bottom: none;
         display: block;
-            width: 100%;
         }
         }
-        h2{
+        h1{
             text-align: center;
         }
-        
+        .detail {
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #f7af6c;/*背景色*/
+            border-bottom: solid 2px #f7af6c;/*少し濃い目の色に*/
+            border-radius: 4px;/*角の丸み*/
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+            width: 100%;
+        }
+        .detail:active {
+        border-bottom: solid 2px #fd9535;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+        }
+        .one{
+            background-color: rgb(243, 229, 150);
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .one_index{
+            background-image:url(./f4-1.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 110px;
+        }
+        .two{
+            background-color: rgb(231, 229, 229);
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .two_index{
+             background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 110px;
+        }
+        .three{
+            background-color: rgb(247, 188, 188);
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
+    <a href="{{url_for('search.window')}}" class="window">検索画面へGO!</a>
+    <h1>本日のランキング～{{ undergraduate }}編～</h1>
 
-    
-    <a href="{{url_for('search.window')}}">検索画面へGO!</a>
-    <h2>本日のランキング～{{ underguraduate }}編～</h2>
-
-    <table class="top3">
+    <table class="rank">
         <tr>
             <th>順位</th>
             <th>カテゴリ</th>
@@ -63,15 +99,30 @@ TOP
             <th>詳細はこちら</th>
         </tr>
             {% for row in ranking %}
-            <tr>
-                <th>{{ loop.index }}</th>
-                <td>{{ row.category }}</td>
-                <td>{{ row.title }}</td>
-                <td>{{ row.name }}</td>
-                <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
-                    <td><button value="submit">詳細</button></td>
-                </form>
-            </tr>
+    
+                {% if loop.index ==1: %}
+                    <tr class="one">
+                        <td class="one_index">
+                {% elif loop.index ==2: %}
+                    <tr class="two">
+                        <td class="two_index">
+                            
+                {% elif loop.index ==3: %}
+                    <tr class="three">
+                        <td class="three_index">
+                {% else %}
+                    <tr class="normal">
+                        <td class="normal_index">
+                {% endif %}
+                     {{ loop.index }}</td>
+                    <td>{{ row.category }}</td>
+                    <td>{{ row.title }}</td>
+                    <td>{{ row.name }}</td>
+                    <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
+                        <td><button value="submit" class="detail">詳細</button></td>
+                    </form>
+                    </tr>
+                <tr>
             {% endfor %}
     </table>
 {% endblock %}

@@ -7,6 +7,8 @@ from functools import wraps
 from lib.db import db
 from lib.models import User, Book
 
+from sqlalchemy.sql import text
+
 #ログインチェック処理
 def login_check(view):
     @wraps(view)
@@ -50,24 +52,25 @@ def logout():
 
 @app.route('/top')
 @login_check
-def top(name, underguraduate):
-    global gakubu_search_result 
-    gakubu_search_result = ''
-    if underguraduate == '経済学部':
-        gakubu_search_result = Book.query.order_by(Book.keizai.desc()).limit(10).offset(0).all()
-    elif underguraduate == '法学部':
-        gakubu_search_result = Book.query.order_by(Book.hougaku.desc()).limit(10).offset(0).all()
-    elif underguraduate == '理学部':
-        gakubu_search_result = Book.query.order_by(Book.rigaku.desc()).limit(10).offset(0).all()
-    elif underguraduate == '工学部':
-        gakubu_search_result = Book.query.order_by(Book.kougaku.desc()).limit(10).offset(0).all()
-    elif underguraduate == '文学部':
-        gakubu_search_result = Book.query.order_by(Book.bungaku.desc()).limit(10).offset(0).all()
-    else:
-        gakubu_search_result = Book.query.order_by(Book.igaku.desc()).limit(10).offset(0).all()
-    return render_template('top.html', name=name, underguraduate=underguraduate, ranking=gakubu_search_result)
+def top(name, undergraduate):
+    global gakubu_search_result
+    t = text("\
+        select b.id, b.title, b.name, b.category \
+        from histories h \
+            inner join books b \
+                on h.book_id = b.id \
+        where h.user_id in ( \
+            select u.id \
+            from users u \
+            where u.undergraduate = :undergraduate)  \
+        and h.datetime between current_date and current_date + integer '30'  \
+        group by b.id, b.title, b.name, b.category  \
+        order by count(h.*) desc \
+    ")
+    gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+    return render_template('top.html', name=name, undergraduate=undergraduate, ranking=gakubu_search_result)
 
 @app.route('/return_top')
 @login_check
 def return_top():
-    return render_template('top.html', name=session.get('name'), underguraduate=session.get('underguraduate'), ranking=gakubu_search_result)
+    return render_template('top.html', name=session.get('name'), undergraduate=session.get('undergraduate'), ranking=gakubu_search_result)

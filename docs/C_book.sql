@@ -1,4 +1,4 @@
-﻿-- booksテーブル 30件
+﻿-- booksテーブル 50件
 -- title category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku
 -- カテゴリは  恋愛, SF,  論文,  ラノベ, 教材, ホラー
 -- idは自動連番
@@ -62,3 +62,25 @@ insert into books (title, category, name, place, keizai, hougaku, rigaku, kougak
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('隣の家の少女', 'ホラー', 'ジャック ケッチャム', 'C', 22, 25, 23, 23, 28, 17);
 
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('My Humanity', 'SF', '長谷 敏司', 'C', 11, 22, 33, 44, 55, 66);
+
+
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('スターウォーズ', 'SF', 'スティーブンスピルバーグ', 'A', 3, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('図書館戦争', 'SF', '有川 浩', 'B', 11, 22, 33, 44, 35, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('日本沈没', 'SF', '小松 左京', 'C', 116, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('魍魎の匣', 'ホラー', '京極 夏彦', 'A', 41, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('着信アリ', 'ホラー', '三池 崇史', 'B', 11, 22, 78, 34, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('百物語', 'ホラー', '杉浦 日向子', 'C', 31, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('花より男子', '恋愛', '神尾 葉子', 'A', 11, 21, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('恋愛依存症', '恋愛', '伊東 明', 'B', 16, 22, 33, 46, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('アオハライド', '恋愛', '金春 智子', 'C', 88, 22, 33, 44, 55, 26);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('プログラミング入門', '教育', 'Linux Academy', 'A', 19, 22, 63, 44, 55, 46);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('日本語検定公式練習問題集', '教育', '日本語検定委員会', 'B', 11, 22, 23, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('考える力学', '教育', '兵頭 俊夫', 'C', 110, 22, 13, 434, 50, 16);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('モンテカルロ法を用いた大貧民プログラムの相互干渉に関する研究', '論文', '藤木 喬介', 'A', 21, 11, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('超音波定在波を用いた液滴燃料の微細化', '論文', '山岸 裕太', 'B', 13, 24, 80, 42, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('位置関係マトリクスの数値エラー行に対する導出手順に基づいた体系的な修正手順の提案', '論文', '土橋 真希', 'C', 11, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('FBGセンサーに向けた高感度反射検出', '論文', '平井 あかり', 'A', 11, 22, 33, 48, 95, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('Re:ゼロから始める異世界生活', 'ラノベ', '長月 達平', 'B', 11, 22, 56, 44, 57, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('青春ブタ野郎はバニーガール先輩の夢を見ない', 'ラノベ', '鴨志田一', 'C', 11, 22, 33, 424, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('Stiens;Gate', 'ラノベ', '科学アドベンチャー', 'A', 11, 20, 39, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('僕は友達が少ない', 'ラノベ', '平坂読', 'C', 9, 21, 333, 44, 50, 6);

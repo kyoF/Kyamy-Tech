@@ -93,7 +93,28 @@ TOP
         }
     </style>
     <a href="{{url_for('search.window')}}" class="window">検索画面へGO!</a>
-    <h1>本日のランキング～{{ undergraduate }}編～</h1>
+    <h1>
+        貸し出し数ランキング～{{ undergraduate }}編～
+        <br>(
+        <script>
+            var before_day=new Date()
+ 
+            before_day.setDate( before_day.getDate() - 30 );
+            
+            var before_day2 = before_day.getDate();
+            var before_year = before_day.getFullYear();
+            var before_month = before_day.getMonth()+1;
+            document.write(before_year+"年"+before_month+"月"+before_day2+"日～");
+
+            var today=new Date(); 
+            var year = today.getFullYear();
+            var month = today.getMonth()+1;
+            var day = today.getDate();
+            document.write(year+"年"+month+"月"+day+"日");
+        </script>
+        </script>
+        )
+    </h1>
 
     <table class="rank">
         <tr>

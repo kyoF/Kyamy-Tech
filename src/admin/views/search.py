@@ -19,6 +19,7 @@ def search_result():
     get_search_result = []
     search_category = request.form.get('search_category')
     search_word = request.form.get('search_word')
+    global categories
 
     if not search_category and not search_word:
         categories = Book.query.order_by(Book.category.desc())

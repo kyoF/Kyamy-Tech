@@ -4,6 +4,15 @@
 {% endblock %}
 {% block body %}
 <style>
+    .back{
+        font-size: 150%;
+        display:block;
+        color:#82ae46;
+        text-align:center;
+        margin: auto;
+        padding-top: 20px;
+        
+    }
     h3{
         margin-left: 26%;
     }
@@ -36,24 +45,25 @@
 <h3>詳細</h3>
     <table border="3px" bordercolor="#82ae46">
         {% if book_info %}
-        <tr>
-            <th class="title">タイトル</th><td>{{ book_info.title }}</td>
-        </tr>
-        <tr>
-            <th >著者</th><td>{{ book_info.name }}</td>
-        </tr>
-        <tr>
-            <th>カテゴリ</th><td>{{ book_info.category }}</td>
-        </tr>
-        <tr>
-            <th>本の場所</th><td>{{ book_info.place }}</td>
-        </tr>
-    </table>
-        <br>
-        <form action="{{url_for('carts.create')}}" method="POST">
-            <input type="hidden" value="{{ book_info.id }}" name="book_id">
-            <button type="submit" class="cart">カートに追加</button>
-        </form>
+            <tr>
+                <th class="title">タイトル</th><td>{{ book_info.title }}</td>
+            </tr>
+            <tr>
+                <th >著者</th><td>{{ book_info.name }}</td>
+            </tr>
+            <tr>
+                <th>カテゴリー</th><td>{{ book_info.category }}</td>
+            </tr>
+            <tr>
+                <th>本の場所</th><td>{{ book_info.place }}</td>
+            </tr>
         {% endif %}
+    </table>
+    <br>
+    <form action="{{url_for('carts.create')}}" method="POST">
+        <input type="hidden" value="{{ book_info.id }}" name="book_id">
+        <button type="submit" class="cart">カートに追加</button>
+    </form>
+    <a href="{{url_for('details.back_before_url')}}" class="back">もどる</a>
 
 {% endblock %}

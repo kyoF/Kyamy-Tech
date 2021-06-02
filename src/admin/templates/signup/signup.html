@@ -1,93 +1,94 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>新規登録</title>  
-</head>
-<body>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic');
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>新規登録</title>  
+    </head>
+    <body>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic');
 
-        body {
-            font-family: 'Sawarabi Gothic', sans-seriff;
-            background-color: #fbf8ef;
-        }
-        .Z_gen_lib{
-            font-size: 1.5em;/* フォントサイズ */
-            font-weight: bold;/* フォント太さ */
-            padding-top: 1em;
-            padding-bottom: 1em;
-            margin-bottom: 2em;
-            border-top: 3px solid #82ae46;/* 上の線 */
-            border-bottom: 3px solid #82ae46;/* 下の線 */
-            color: #82ae46;/* フォント色 */
-            text-align: center;/* テキストの位置 */
-        }
-        footer{
-                    font-size: 1.0em;/* フォントサイズ */
-                    font-weight: bold;/* フォント太さ */
-                    padding-top: 1em;
-                    padding-bottom: 1em;
-                    margin-bottom: 2em;
-                    border-top: 3px solid #82ae46;/* 上の線 */
-                    border-bottom: 3px solid #82ae46;/* 下の線 */
-                    color: #82ae46;/* フォント色 */
-                    text-align: right;/* テキストの位置 */
-                    margin-top: 120px;
-                }
-    </style>
-    <h1 class="Z_gen_lib">Z_Generation_Library<br>福井大学図書館システム</h1>
-    <h2 align = "center">新規登録</h2>
-    {% for category, message in get_flashed_messages(with_categories=true) %}
-    {% if category == 'success' %}
-    <div style="background-color: #f8e58c;">{{ message }}</div>
-    {% elif category == 'error' %}
-    <div style="background-color: #ffc0cb;">{{ message }}</div>
-    {% endif %}
-    {% endfor %}
-    <div align = "center">
-        <form action="{{url_for('signup.create')}}" method="POST">
-        <table border="0">
-                <p>学部：<br>
-                    <select name="undergraduate" size="1" class="undergraduate">
-                        <option>経済学部</option>
-                        <option>法学部</option>
-                        <option>文学部</option>
-                        <option>理学部</option>
-                        <option>工学部</option>
-                        <option>医学部</option>
-                    </select>
-                </p>
-                <p>学年：<br>
-                    <select name="graduate" size="1" class="graduate">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                    </select>
-                </p>
-                <p>お名前：<br>
-                    <input type="text" name="name" value="" size="20">
-                </p>
-                <p>ユーザID：<br>
-                    <input type="text" name="user_id" value="" size="20">
-                </p>
-                <p>パスワード：<br>
-                    <input type="password" name="password" value="" size="20">
-                </p>
-                <tr>
-                    <td colspan="2">
-                        <button type="submit">送信</button>
-                    </td>
-                </tr>
-            </form>
-            </table>
-        </div>
-        <footer>
-            Produce by 稲毛商事
-        </footer>
-</body>
+            body {
+                font-family: 'Sawarabi Gothic', sans-seriff;
+                background-color: #fbf8ef;
+            }
+            .Z_gen_lib{
+                font-size: 1.5em;/* フォントサイズ */
+                font-weight: bold;/* フォント太さ */
+                padding-top: 1em;
+                padding-bottom: 1em;
+                margin-bottom: 2em;
+                border-top: 3px solid #82ae46;/* 上の線 */
+                border-bottom: 3px solid #82ae46;/* 下の線 */
+                color: #82ae46;/* フォント色 */
+                text-align: center;/* テキストの位置 */
+            }
+            footer{
+                        font-size: 1.0em;/* フォントサイズ */
+                        font-weight: bold;/* フォント太さ */
+                        padding-top: 1em;
+                        padding-bottom: 1em;
+                        margin-bottom: 2em;
+                        border-top: 3px solid #82ae46;/* 上の線 */
+                        border-bottom: 3px solid #82ae46;/* 下の線 */
+                        color: #82ae46;/* フォント色 */
+                        text-align: right;/* テキストの位置 */
+                        margin-top: 120px;
+                    }
+        </style>
+        <h1 class="Z_gen_lib">Z_Generation_Library<br>福井大学図書館システム</h1>
+        <h2 align = "center">新規登録</h2>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        {% if category == 'success' %}
+        <div style="background-color: #f8e58c;">{{ message }}</div>
+        {% elif category == 'error' %}
+        <div style="background-color: #ffc0cb;">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+        <div align = "center">
+            <form action="{{url_for('signup.create')}}" method="POST">
+            <table border="0">
+                    <p>学部：<br>
+                        <select name="undergraduate" size="1" class="undergraduate">
+                            <option>経済学部</option>
+                            <option>法学部</option>
+                            <option>文学部</option>
+                            <option>理学部</option>
+                            <option>工学部</option>
+                            <option>医学部</option>
+                        </select>
+                    </p>
+                    <p>学年：<br>
+                        <select name="graduate" size="1" class="graduate">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                    </p>
+                    <p>お名前：<br>
+                        <input type="text" name="name" value="" size="20">
+                    </p>
+                    <p>ユーザID：<br>
+                        <input type="text" name="user_id" value="" size="20">
+                    </p>
+                    <p>パスワード：<br>
+                        <input type="password" name="password" value="" size="20">
+                    </p>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit">送信</button>
+                        </td>
+                    </tr>
+                </form>
+                </table>
+            </div>
+            <footer>
+                Produce by 稲毛商事
+            </footer>
+    </body>
 </html>

@@ -26,7 +26,6 @@ def create():
         undergraduate=request.form.get('undergraduate'),
     )
     test =  User.query.filter(User.user_id == user.user_id).all()
-    print(test)
     if User.query.filter(User.user_id == user.user_id).all():
         flash('これはすでに登録されているIDです', 'error')
         return render_template('signup/signup.html')

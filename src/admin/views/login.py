@@ -26,7 +26,6 @@ def login():
         try:
             user_id = request.form.get('user_id')
             user_info = User.query.filter_by(user_id = user_id).first()
-            print(type(user_info))
             if user_info is None:
                 flash('ユーザIDが違います。', 'error')
             elif not user_info.password == request.form.get('password'):
@@ -48,7 +47,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
-    print('ログアウトしました。')
+    flash('ログアウトしました。', 'success')
     return redirect(url_for('login'))
 
 @app.route('/top')
@@ -64,7 +63,7 @@ def top(name, undergraduate):
             select u.id \
             from users u \
             where u.undergraduate = :undergraduate)  \
-        and h.datetime between current_date and current_date + integer '30'  \
+        and h.datetime between current_date - integer '30' and current_date \
         group by b.id, b.title, b.name, b.category  \
         order by count(h.*) desc \
         limit (10) offset (0); \

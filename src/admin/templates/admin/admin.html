@@ -52,7 +52,7 @@
         </h4>
         
         <form action="{{url_for('admin.show_admin_window')}}" method="POST">
-                <select size="1" class="sort_box" name="sort_category">
+            <select size="1" class="sort_box" name="sort_category">
                 <option>id順</option>
                 <option>経済学部人気順</option>
                 <option>法学部人気順</option>
@@ -60,7 +60,9 @@
                 <option>工学部人気順</option>
                 <option>文学部人気順</option>
                 <option>医学部人気順</option>
-                </select>
+            </select>
+            <button type="submit">sort</button>
+        </form>     
                 <table border="1">
                 　  <tr>
                         <th>id</th>
@@ -89,6 +91,5 @@
                             </tr>
                         {% endfor %}
                 </table>
-        </form>     
     </body>
 </html>

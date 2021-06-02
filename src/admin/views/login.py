@@ -54,7 +54,7 @@ def logout():
 @app.route('/top')
 @login_check
 def top(name, undergraduate):
-    global gakubu_search_result
+    global t
     t = text("\
         select b.id, b.title, b.name, b.category \
         from histories h \
@@ -75,4 +75,6 @@ def top(name, undergraduate):
 @app.route('/return_top')
 @login_check
 def return_top():
-    return render_template('top.html', name=session.get('name'), undergraduate=session.get('undergraduate'), ranking=gakubu_search_result)
+    undergraduate = session.get('undergraduate')
+    gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+    return render_template('top.html', name=session.get('name'), undergraduate=undergraduate, ranking=gakubu_search_result)

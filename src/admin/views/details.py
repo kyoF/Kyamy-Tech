@@ -22,6 +22,8 @@ def show_details(id):
 def back_before_url():
     judge = before_url[(before_url.rfind('/')):]
     if judge == '/' or judge == '/return_top':
-        return render_template('top.html', name=session.get('name'), undergraduate=session.get('undergraduate'), ranking=login.gakubu_search_result)
+        undergraduate = session.get('undergraduate')
+        ranking = list(db.session.execute(login.t, {'undergraduate':undergraduate}))
+        return render_template('top.html', name=session.get('name'), undergraduate=undergraduate, ranking=ranking)
     else:
         return render_template('search/result.html', categories=search.categories)

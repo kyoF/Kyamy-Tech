@@ -28,6 +28,15 @@
         .name{
             width:20%;
         }
+        .back{
+        font-size: 150%;
+        display:block;
+        color:#82ae46;
+        text-align:center;
+        margin: auto;
+        padding-top: 20px;
+        
+        }
 </style>
     <h1>検索結果</h1>
     <table border="2" bordercolor="#82ae46">
@@ -50,4 +59,5 @@
         </tr>
         {% endfor %}
     </table>
+    <a href="{{url_for('search.window')}}" class="back">もどる</a>
 {% endblock %}

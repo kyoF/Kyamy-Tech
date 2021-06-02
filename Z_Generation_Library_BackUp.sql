@@ -603,7 +603,7 @@ COPY users (id, user_id, name, password, graduate, undergraduate) FROM stdin;
 3       inage   稲毛 亮 inage   8       文学部
 4       mori    森 雄大 mori    8       理学部
 5       abe     阿部 祐香       abe     8       医学部
-6       mori    青柳 司 aoyagi  8       工学部
+6       aoyagi  青柳 司 aoyagi  8       工学部
 \.
 
 

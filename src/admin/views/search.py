@@ -6,6 +6,8 @@ from lib.db import db
 
 from .login import login_check
 
+from sqlalchemy import or_
+
 search = Blueprint('search', __name__)
 
 @search.route('/')
@@ -25,7 +27,7 @@ def search_result():
         categories = Book.query.order_by(Book.category.desc())
 
     elif not search_category:
-        categories = Book.query.order_by(Book.category.desc()).filter(Book.title.like(f'%\\{search_word}%'))
+        categories = Book.query.order_by(Book.category.desc()).filter(or_(Book.title.like(f'%\\{search_word}%'), Book.name.like(f'%\\{search_word}%')))
 
     elif not search_word:
         categories = Book.query.order_by(Book.category.desc()).filter(Book.category==search_category)

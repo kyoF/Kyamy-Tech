@@ -50,7 +50,7 @@ def delete(book_id):
         cart=session.get('cart')
         cart.pop(book_id,None)
         session['cart']=cart
-    flash('商品が削除されました','success')
+    flash('本が削除されました','success')
     return redirect(url_for('carts.index'))
 
 @cart.route('/insert')
@@ -89,5 +89,5 @@ def insert():
             flash('最初からやり直してください', 'error')
 
     session.pop('cart', None)
-    flash('商品を借りました', 'success')
+    flash('本を借りました', 'success')
     return redirect(url_for('carts.index'))

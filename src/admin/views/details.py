@@ -14,6 +14,7 @@ def to_details():
     return render_template('details/details.html')
 
 @detail.route('/<string:id>', methods=['POST'])
+@login_check
 def show_details(id):
     book_info = Book.query.get(id)
     return render_template('details/details.html', book_info=book_info)

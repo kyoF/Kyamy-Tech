@@ -47,6 +47,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
+    session.clear()
     flash('ログアウトしました。', 'success')
     return redirect(url_for('login'))
 

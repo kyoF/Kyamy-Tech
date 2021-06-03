@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+{% block title %}
+TOP
+{% endblock %}
+
+{% block body %}
+    <style>
+        .window{
+            font-size: 150%;
+            text-align: center;
+        }
+        table {
+        margin:auto;
+        width:1000px;
+        }
+        .rank th {
+        background-color: #b0ca71;
+        border: solid 1px #ccc;
+        color: #fff;
+        padding: 10px;
+        }
+        .rank td {
+        border: solid 1px #ccc;
+        padding: 10px;
+        text-align: center;
+        }
+
+        @media screen and (max-width: 640px) {
+        .last td:last-child {
+            border-bottom: solid 1px #ccc;
+        }
+        .rank {
+            width: 80%;
+            
+        }
+        .rank th,
+        .rank td {
+        border-bottom: none;
+        display: block;
+        }
+        }
+        h1{
+            text-align: center;
+        }
+        .detail {
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #b0ca71;/*背景色*/
+            border-radius: 4px;/*角の丸み*/
+            width: 100%;
+            font-weight: bold;
+            
+        }
+        .detail:hover{
+        cursor:pointer;
+        }
+        .one{
+            background-color: rgb(243, 229, 150);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .one_index{
+            background-image:url(./f4-1.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 110px;
+        }
+        .two{
+            background-color: rgb(231, 229, 229);
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .two_index{
+             background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 110px;
+        }
+        .three{
+            background-color: rgb(247, 188, 188);
+            font-weight: bold;
+        }
+        .category{
+            width: 10%;
+        }
+        .name{
+            width:20%;
+        }
+        .detail_td{
+            width: 12%;
+        }
+    </style>
+    <a href="{{url_for('search.window')}}" class="window">検索画面へGO!</a>
+    <h1>
+        貸し出し数ランキング～{{ undergraduate }}編～
+        <br>(
+        <script>
+            var before_day=new Date()
+ 
+            before_day.setDate( before_day.getDate() - 30 );
+            
+            var before_day2 = before_day.getDate();
+            var before_year = before_day.getFullYear();
+            var before_month = before_day.getMonth()+1;
+            document.write(before_year+"年"+before_month+"月"+before_day2+"日～");
+
+            var today=new Date(); 
+            var year = today.getFullYear();
+            var month = today.getMonth()+1;
+            var day = today.getDate();
+            document.write(year+"年"+month+"月"+day+"日");
+        </script>
+        </script>
+        )
+    </h1>
+
+    <table class="rank">
+        <tr>
+            <th>順位</th>
+            <th>カテゴリ</th>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>詳細はこちら</th>
+        </tr>
+            {% for row in ranking %}
+    
+                {% if loop.index ==1: %}
+                    <tr class="one">
+                        <br><td class="one_index"><i class="fas fa-crown"></i></br>
+                {% elif loop.index ==2: %}
+                    <tr class="two">
+                        <td class="two_index">
+                            
+                {% elif loop.index ==3: %}
+                    <tr class="three">
+                        <td class="three_index">
+                {% else %}
+                    <tr class="normal">
+                        <td class="normal_index">
+                {% endif %}
+                    {{ loop.index }}</td>
+                <td class="category">{{ row.category }}</td>
+                <td class="title">{{ row.title }}</td>
+                <td class="name">{{ row.name }}</td>
+                <form action="{{url_for('details.show_details', id=row.id)}}" method="POST">
+                    <td class="detail_td"><button value="submit" class="detail">詳細</button></td>
+                </form>
+                </tr>
+                <tr>
+            {% endfor %}
+    </table>
+{% endblock %}

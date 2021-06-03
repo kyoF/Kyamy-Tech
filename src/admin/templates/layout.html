@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic');
+
+        body {
+            font-family: 'Sawarabi Gothic', sans-seriff;
+            background-color: #fbf8ef;
+        }
+        .Z_gen_lib{
+            font-size: 1.5em;/* フォントサイズ */
+            font-weight: bold;/* フォント太さ */
+            padding-top: 1em;
+            padding-bottom: 1em;
+            margin-bottom: 2em;
+            border-top: 3px solid #82ae46;/* 上の線 */
+            border-bottom: 3px solid #82ae46;/* 下の線 */
+            color: #82ae46;/* フォント色 */
+            text-align: center;/* テキストの位置 */
+        }
+        a{
+            text-decoration: none;
+        }
+        footer{
+                    font-size: 1.0em;/* フォントサイズ */
+                    font-weight: bold;/* フォント太さ */
+                    padding-top: 1em;
+                    padding-bottom: 1em;
+                    margin-bottom: 2em;
+                    border-top: 3px solid #82ae46;/* 上の線 */
+                    border-bottom: 3px solid #82ae46;/* 下の線 */
+                    color: #82ae46;/* フォント色 */
+                    text-align: right;/* テキストの位置 */
+                    margin-top: 120px;
+                }
+                a{
+                    color:#82ae46 ;
+                    font-size: 130%;
+                }
+    </style>
+</head>
+    <body>
+        <header>
+            <div>
+                <h1 class="Z_gen_lib">Z_Generation_Library<br>福井大学図書館システム</h1>
+                <h3 class="layout">
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    {% if category == 'success' %}
+                        <div style="background-color: #f8e58c;">{{ message }}</div>
+                    {% elif category == 'error' %}
+                        <div style="background-color: #ffc0cb;">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+                <div align = "right">
+                <a href="{{url_for('return_top')}}">TOP</button>
+                <a href="{{url_for('carts.index')}}">カート</button>
+                <a href="{{url_for('logout')}}">ログアウト</a>
+                </div>
+                </h3>
+            </div>
+        </header>
+        {% block body %}{% endblock %} 
+        <footer>
+            Produced by 稲毛商事
+        </footer>  
+    </body>
+</html>

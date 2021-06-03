@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block title %}
+    カート一覧
+{% endblock %}
+{% block body %}
+    <style>
+           h3{
+        margin-left: 10%;
+        }
+        table{
+            margin: auto;
+            width: 1000px;
+            }
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+        .title{
+            width: 50%;
+        }
+        .category{
+            width:8%;
+        }
+        .name{
+            width:12%;
+        }
+        .delete{
+            width: 8%;
+        }
+        .delete_button {
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #b0ca71;/*背景色*/
+            border-radius: 4px;/*角の丸み*/
+        }
+        .all_delete_button{
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #b0ca71;/*背景色*/
+            border-radius: 4px;/*角の丸み*/
+        }
+        .all_delete{
+            width: 8%;
+        }
+        /*popup表示させたいコンテンツのレイアウトと位置*/
+        #popup{
+        width:30%;
+        line-height:100px;
+        padding:0 4%;
+        box-sizing:border-box;
+        display:none;
+        position:fixed;
+        top:50%;
+        left:50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-color: rgb(185, 184, 184);
+        }
+        span{
+            text-align: center;
+        }
+
+        label{
+        display:block;
+        }
+        /*ボタンの装飾*/
+        label span{
+        display:block;
+        background-color:#82ae46;
+        color:#fff;
+        width:200px;
+        line-height:40px;
+        border-radius:4px;
+        text-align:center;
+        margin-left: 74%;
+        }
+        label span:hover{
+        cursor:pointer;
+        }
+        input[type="checkbox"]{
+        display:none;
+        }
+        /*checkboxがチェックの状態になったらpopupを表示させる*/
+        input[type="checkbox"]:checked + #popup{
+        display:block;
+        }
+    </style>
+
+    <script>
+        
+        function show_popup(){
+            if(window.confirm('よろしいですか？')){
+                location.href = "{{url_for('carts.insert')}}";
+                alert('借りました！')
+            }
+            else{
+                window.alert('キャンセルされました'); // 警告ダイアログを表示
+            }
+        }
+
+        function show_error_popup(){
+            window.alert('図書がありません');
+        }
+
+    </script>
+
+    <h3>カート一覧</h3>
+    <table border="2" bordercolor="#82ae46">
+        <thead>
+        <tr>
+            <th class="category">カテゴリ</th>
+            <th class="title">タイトル</th>
+            <th class="name">著者</th>
+            <th class="delete">カートから削除</th>
+        </tr>    
+        </thead>
+        <tbody>
+            {% if cart_details %}
+                {% for cart_detail in cart_details: %}
+                    <tr>
+                        <td>{{ cart_detail.category }}</td>
+                        <td>{{ cart_detail.title }}</td>
+                        <td>{{ cart_detail.name }}</td>
+                        <td class="delete">
+                            <form action="{{url_for('carts.delete',book_id=cart_detail.id)}}" method="POST">
+                                <button type="submit" class="delete_button">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4"></td>
+                    <td class="all_delete">
+                        <form action="{{url_for('carts.delete',book_id='all')}}" method="POST">
+                            <button type="submit" class="all_delete_button">全削除</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <h2>
+        <label>
+            {% if cart_details %}
+                <span type="submit" onClick="show_popup()">借りる</span>
+            {% else %}
+                <span type="submit" onClick="show_error_popup()">借りる</span>
+            {% endif %}
+        </label>
+    </h2>
+
+{% endblock %}

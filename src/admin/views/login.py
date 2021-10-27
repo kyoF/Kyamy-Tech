@@ -70,6 +70,28 @@ def top(name, undergraduate):
         limit (10) offset (0); \
     ")
     gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+    if gakubu_search_result == []:
+        if undergraduate=='経済学部':
+            t = text("select id, title, name, category from books order by keizai limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        elif undergraduate=='法学部':
+            t = text("select id, title, name, category from books order by hougaku limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        elif undergraduate=='理学部':
+            t = text("select id, title, name, category from books order by rigaku limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        elif undergraduate=='工学部':
+            t = text("select id, title, name, category from books order by kougaku limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        elif undergraduate=='文学部':
+            t = text("select id, title, name, category from books order by bungaku limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        elif undergraduate=='医学部':
+            t = text("select id, title, name, category from books order by igaku limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
+        else:
+            t = text("select id, title, name, category from books limit(10);")
+            gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
     return render_template('top.html', name=name, undergraduate=undergraduate, ranking=gakubu_search_result)
 
 @app.route('/return_top')

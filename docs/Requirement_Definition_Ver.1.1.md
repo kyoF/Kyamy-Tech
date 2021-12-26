@@ -1,4 +1,4 @@
-# Z Generation Libracy System 要件定義署
+# Z Generation Libracy System 要件定義書
 
 | 作成者 | Kyamy-Tech |
 | ------ | ---------- |

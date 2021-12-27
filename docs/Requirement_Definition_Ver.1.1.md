@@ -1,8 +1,8 @@
 # Z Generation Libracy System 要件定義署
 
-| 作成者 | Kyamy-Tech |
+| 作成者 | 作成日 |
 | ------ | ---------- |
-| 作成日 | 2021/05/24 |
+| Kyamy-Tech | 2021/05/24 |
 
 <br>
 

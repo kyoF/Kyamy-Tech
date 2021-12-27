@@ -2,8 +2,9 @@ Kyamy-Tech 御中
 
 # Z Generation Libracy System 提案依頼書
 
-提案日：2021 年 5 月 21 日<br>
-提案会社：稲毛商事
+| 提案日 | 提案会社 |
+| - | - |
+| 2021 年 5 月 21 日 | 稲毛商事 |
 
 <br>
 

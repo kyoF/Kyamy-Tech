@@ -1,24 +1,10 @@
 version: "3.5"
 
 services:
-  db:
-    build:
-      context: .
-    volumes:
-      - ./postgres:/var/lib/postgresql
-      - ./sql/Z_Generation_Library_BackUp.sql:/docker-entrypoint-initdb.d
-    expose:
-      - "5432"
+  web:
+    build: src/
     ports:
-      - "5434:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
-    restart: "always"
-    networks:
-      - db-net
-
-networks:
-  db-net:
-    driver: bridge
+      - 5000:5000
+    tty: true
+    env_file:
+      - ./src/.env

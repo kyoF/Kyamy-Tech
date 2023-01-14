@@ -3,8 +3,11 @@ version: "3.5"
 services:
   web:
     build: src/
+    command: poetry run python run.py runserver 0.0.0.0:5000 --insecure
+    volumes:
+      - ./src:/src
     ports:
-      - 5000:5000
+      - "5000:5000"
     tty: true
     env_file:
       - ./src/.env

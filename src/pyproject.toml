@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "src"
-version = "0.1.0"
+version = "1.20"
 description = ""
 authors = ["kyoF <fujiki.kyosuke@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-flask = "^2.2.2"
+Flask = "^2.2.3"
 
 
 [build-system]

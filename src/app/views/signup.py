@@ -1,8 +1,8 @@
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
-from lib.models import User
+from models import User
 
-from lib.db import db
+from database import db
 
 from functools import wraps
 

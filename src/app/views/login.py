@@ -1,13 +1,15 @@
-from flask import render_template, request, url_for, session, redirect, flash
+from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
-from admin import app
+# from ..app import app
 
 from functools import wraps
 
-from lib.db import db
-from lib.models import User, Book
+from database import db
+from models import User, Book
 
 from sqlalchemy.sql import text
+
+app = Blueprint('', __name__)
 
 #ログインチェック処理
 def login_check(view):

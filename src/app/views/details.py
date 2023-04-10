@@ -1,13 +1,13 @@
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
-from lib.models import Book
+from models import Book
 
-from lib.db import db
+from database import db
 
 from .login import login_check
 
-from admin.views import login
-from admin.views import search
+from views import login
+from views import search
 
 detail = Blueprint('details', __name__)
 

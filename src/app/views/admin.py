@@ -1,8 +1,8 @@
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
-from lib.models import History, Book ,User
+from models import History, Book ,User
 
-from lib.db import db
+from database import db
 
 admin = Blueprint('admin', __name__)
 

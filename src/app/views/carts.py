@@ -2,9 +2,9 @@ from flask import render_template, request, url_for, session, redirect, flash, B
 
 import datetime
 
-from lib.models import Book, History, User
+from models import Book, History, User
 
-from lib.db import db
+from database import db
 
 from .login import login_check
 

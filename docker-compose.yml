@@ -13,3 +13,30 @@ services:
       FLASK_APP: "app/app.py"
     tty: true
     stdin_open: true
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    hostname: z-generation-library
+    env_file:
+      - ./db/.env
+    volumes:
+      - ./db/init_query:/docker-entrypoint-initdb.d
+      - zgl-db-data:/var/lib/mysql
+    ports:
+    - 3306:3306 
+
+  adminer:
+    image: adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: zgl
+    hostname: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+volumes:
+  zgl-db-data:

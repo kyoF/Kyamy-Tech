@@ -1,4 +1,4 @@
-from lib.db import db
+from database import db
 
 class History(db.Model):
 
@@ -15,5 +15,3 @@ class History(db.Model):
         self.book_id = book_id
         self.user_id = user_id
         self.datetime = datetime.today()
-    
-

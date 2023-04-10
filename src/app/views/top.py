@@ -1,8 +1,8 @@
 from flask import render_template, session, Blueprint
+from sqlalchemy.sql import text
 
 from database import db
 from lib.login_check import login_check
-from sqlalchemy.sql import text
 
 
 blueprint = Blueprint('top', __name__)

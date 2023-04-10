@@ -1,22 +1,16 @@
-from flask import render_template, request, url_for, session, redirect, flash, Blueprint
+from flask import render_template, request, flash, Blueprint
 
 from models import User
-
 from database import db
 
-from functools import wraps
 
-signup = Blueprint('signup', __name__)
+blueprint = Blueprint('signup', __name__)
 
-@signup.route('/')
+@blueprint.route('/')
 def sign_up():
     return render_template('signup/signup.html')
 
-#新規登録処理
-
-
-
-@signup.route('/', methods=['POST'])
+@blueprint.route('/', methods=['POST'])
 def create():
     user = User(
         name=request.form.get('name'),
@@ -25,7 +19,6 @@ def create():
         graduate=request.form.get('graduate'),
         undergraduate=request.form.get('undergraduate'),
     )
-    test =  User.query.filter(User.user_id == user.user_id).all()
     if User.query.filter(User.user_id == user.user_id).all():
         flash('これはすでに登録されているIDです', 'error')
         return render_template('signup/signup.html')
@@ -40,7 +33,7 @@ def create():
         return render_template('signup/signup.html')
     else:
         try:
-            db.session.add(user)    #不備があった際の例外処理
+            db.session.add(user)
             db.session.commit()
         except:
             flash('入力した情報を再度確認してください', 'error')

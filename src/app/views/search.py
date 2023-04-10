@@ -4,7 +4,7 @@ from models import Book
 
 from database import db
 
-from .login import login_check
+from lib.login_check import login_check
 
 from sqlalchemy import or_
 

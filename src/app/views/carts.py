@@ -6,7 +6,7 @@ from models import Book, History, User
 
 from database import db
 
-from .login import login_check
+from lib.login_check import login_check
 
 cart = Blueprint('carts', __name__)
 

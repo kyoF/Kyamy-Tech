@@ -17,7 +17,7 @@ services:
   db:
     image: mysql:5.7
     container_name: mysql
-    hostname: z-generation-library
+    hostname: zgl
     env_file:
       - ./db/.env
     volumes:

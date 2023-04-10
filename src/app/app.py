@@ -3,7 +3,9 @@ from flask import Flask
 #init_dbインポート
 from database import init_db
 # from lib.db import init_db
-from views import login, signup, search, carts, details, admin
+from views import login, signup, search, carts, details, admin, top
+from views.login import blueprint
+from views.top import top_blueprint
 
 #Flaskを定義
 app = Flask(__name__, static_url_path='/static')
@@ -12,9 +14,12 @@ app = Flask(__name__, static_url_path='/static')
 # def hello():
 #     return 'Hello World!'
 
-app.config.from_object('config.Config')
+app.config.from_object('config.DevelopmentConfig')
 
 init_db(app)
+app.register_blueprint(top_blueprint, url_prefix='/top')
+
+app.register_blueprint(blueprint, url_prefix='/login')
 
 app.register_blueprint(search.search, url_prefix='/search')
 

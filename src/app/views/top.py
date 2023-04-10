@@ -1,16 +1,15 @@
-from flask import render_template, request, url_for, session, redirect, flash, Blueprint
-
-from models import History, Book ,User
+from flask import render_template, session, Blueprint
 
 from database import db
 from lib.login_check import login_check
 from sqlalchemy.sql import text
 
-top_blueprint = Blueprint('top', __name__)
 
-@top_blueprint.route('/')
+blueprint = Blueprint('top', __name__)
+
+@blueprint.route('/')
 @login_check
-def top(name, undergraduate):
+def show_top(name, undergraduate):
     global t
     t = text("\
         select b.id, b.title, b.name, b.category \
@@ -51,9 +50,9 @@ def top(name, undergraduate):
             gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
     return render_template('top.html', name=name, undergraduate=undergraduate, ranking=gakubu_search_result)
 
-@top_blueprint.route('/back_top')
+@blueprint.route('/back')
 @login_check
-def return_top():
+def back_top():
     undergraduate = session.get('undergraduate')
     gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
     return render_template('top.html', name=session.get('name'), undergraduate=undergraduate, ranking=gakubu_search_result)

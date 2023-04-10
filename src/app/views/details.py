@@ -6,8 +6,7 @@ from database import db
 
 from lib.login_check import login_check
 
-from views import login
-from views import search
+from views import account, search
 
 detail = Blueprint('details', __name__)
 
@@ -21,9 +20,9 @@ def show_details(id):
 @detail.route('/back')
 def back_before_url():
     judge = before_url[(before_url.rfind('/')):]
-    if judge == '/' or judge == '/return_top':
+    if judge == '/' or judge == '/back':
         undergraduate = session.get('undergraduate')
-        ranking = list(db.session.execute(login.t, {'undergraduate':undergraduate}))
+        ranking = list(db.session.execute(account.t, {'undergraduate':undergraduate}))
         return render_template('top.html', name=session.get('name'), undergraduate=undergraduate, ranking=ranking)
     else:
         return render_template('search/result.html', categories=search.categories)

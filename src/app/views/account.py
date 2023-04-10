@@ -1,21 +1,11 @@
 from flask import render_template, request, url_for, session, redirect, flash, Blueprint
 
-# from ..app import app
-
-from functools import wraps
-
-from database import db
-from models import User, Book
-
-from sqlalchemy.sql import text
-
-from views.top import top
-
-blueprint = Blueprint('login', __name__)
+from models import User
+from views.top import show_top
 
 
+blueprint = Blueprint('account', __name__)
 
-#ログイン
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method =='POST':
@@ -34,12 +24,11 @@ def login():
                 session['undergraduate'] = user_info.undergraduate
                 flash('ログインしました。', 'success')
                 flash('ようこそ'+session['name']+'さん！', 'success')
-                return top(session.get('name'), session.get('undergraduate'))
+                return show_top(session.get('name'), session.get('undergraduate'))
         except ValueError:
             flash('適切なユーザIDを入力してください', 'error')
     return render_template('login/login.html')
 
-#ログアウト
 @blueprint.route('/logout')
 def logout():
     session.pop('logged_in', None)

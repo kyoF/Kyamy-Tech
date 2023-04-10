@@ -8,6 +8,6 @@ def login_check(view):
     def inner(*args, **kwargs):
         if not session.get('logged_in'):
             flash('ログインしてください。', 'error')  #ログインしないまま操作したときのflash
-            return redirect(url_for('login.login'))
+            return redirect(url_for('account.login'))
         return view(*args, **kwargs)
     return inner

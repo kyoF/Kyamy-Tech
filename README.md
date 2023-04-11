@@ -1,28 +1,43 @@
 # Z Generation Library
 
-## 確認方法
+## 環境構築
 
-1. PostgresQL の起動
-
-```
-$ brew services start postgresql
-```
-
-2. src フォルダに移動し、実行ファイルの起動
+1. .envファイル作成
 
 ```
-$ python3 run.py
+$ cp db/.env.sample db/.env
+$ cp src/.env.sample src/.env
 ```
 
-3. 以下でログイン
+2. コンテナ起動
 
+```
+$ docker-compose up -d --build
+```
+
+3. フロントエンド確認
+http://localhost:5000/account/login
 ```
 ID : test
-PASSWORD : test
+PASS : test
 ```
 
-4. PostgresQL の停止
-
+4. データベース確認
+http://localhost:3306/
 ```
-$ brew services stop postgresql
+サーバ：db
+ユーザ名：zgl
+パスワード：zgl
+データベース：zgl
+```
+
+### その他
+#### コンテナ停止コマンド
+```
+$ docker-compose down
+```
+#### データベース初期化
+```
+$ docker-compose down --rmi all --volumes --remove-orphans
+$ docker-compose up -d --build
 ```

@@ -21,10 +21,11 @@ services:
     env_file:
       - ./db/.env
     volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
       - ./db/init_query:/docker-entrypoint-initdb.d
       - zgl-db-data:/var/lib/mysql
     ports:
-    - 3306:3306 
+      - 3306:3306 
 
   adminer:
     image: adminer

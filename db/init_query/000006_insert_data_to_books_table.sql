@@ -45,10 +45,10 @@ insert into books (title, category, name, place, keizai, hougaku, rigaku, kougak
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('プログラミング入門', '教育', 'Linux Academy', 'A', 19, 22, 63, 44, 55, 46);
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('日本語検定公式練習問題集', '教育', '日本語検定委員会', 'B', 11, 22, 23, 44, 55, 66);
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('考える力学', '教育', '兵頭 俊夫', 'C', 110, 22, 13, 434, 50, 16);
-insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('モンテカルロ法を用いた大貧民プログラムの相互干渉に関する研究', '論文', '藤木 喬介', 'A', 21, 11, 33, 44, 55, 66);
-insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('超音波定在波を用いた液滴燃料の微細化', '論文', '山岸 裕太', 'B', 13, 24, 80, 42, 55, 66);
-insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('位置関係マトリクスの数値エラー行に対する導出手順に基づいた体系的な修正手順の提案', '論文', '土橋 真希', 'C', 11, 22, 33, 44, 55, 66);
-insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('FBGセンサーに向けた高感度反射検出', '論文', '平井 あかり', 'A', 11, 22, 33, 48, 95, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('モンテカルロ法を用いた大貧民プログラムの相互干渉に関する研究', '論文', 'ddbb', 'A', 21, 11, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('超音波定在波を用いた液滴燃料の微細化', '論文', 'asdf', 'B', 13, 24, 80, 42, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('位置関係マトリクスの数値エラー行に対する導出手順に基づいた体系的な修正手順の提案', '論文', 'bbbdd', 'C', 11, 22, 33, 44, 55, 66);
+insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('FBGセンサーに向けた高感度反射検出', '論文', 'ppap', 'A', 11, 22, 33, 48, 95, 66);
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('Re:ゼロから始める異世界生活', 'ラノベ', '長月 達平', 'B', 11, 22, 56, 44, 57, 66);
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('青春ブタ野郎はバニーガール先輩の夢を見ない', 'ラノベ', '鴨志田一', 'C', 11, 22, 33, 424, 55, 66);
 insert into books (title, category, name, place, keizai, hougaku, rigaku, kougaku, bungaku, igaku) values ('Stiens;Gate', 'ラノベ', '科学アドベンチャー', 'A', 11, 20, 39, 44, 55, 66);

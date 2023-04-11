@@ -1,7 +1,7 @@
 from database import db
 
-class History(db.Model):
 
+class History(db.Model):
     __tablename__ = 'histories'
 
     id = db.Column(db.Integer, primary_key=True)

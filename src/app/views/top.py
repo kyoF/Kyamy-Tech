@@ -20,10 +20,10 @@ def show_top(name, undergraduate):
             select u.id \
             from users u \
             where u.undergraduate = :undergraduate)  \
-        and h.datetime between current_date - integer '30' and current_date \
+        and h.datetime between date_sub(current_date, interval 30 day) and current_date \
         group by b.id, b.title, b.name, b.category  \
-        order by count(h.*) desc \
-        limit (10) offset (0); \
+        order by count(h.id) desc \
+        limit 0, 10; \
     ")
     gakubu_search_result = list(db.session.execute(t, {'undergraduate':undergraduate}))
     if gakubu_search_result == []:

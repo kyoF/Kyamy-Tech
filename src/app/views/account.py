@@ -11,6 +11,8 @@ def login():
     if request.method =='POST':
         try:
             user_id = request.form.get('user_id')
+            print('User is {User}')
+            print('test is {User.id}')
             user_info = User.query.filter_by(user_id = user_id).first()
             if user_info is None:
                 flash('ユーザIDが違います。', 'error')

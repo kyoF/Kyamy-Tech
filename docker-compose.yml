@@ -13,6 +13,8 @@ services:
       FLASK_APP: "app/app.py"
     tty: true
     stdin_open: true
+    networks:
+      - zgl-network
 
   db:
     image: mysql:5.7
@@ -26,11 +28,13 @@ services:
       - zgl-db-data:/var/lib/mysql
     ports:
       - 3306:3306 
+    networks:
+      - zgl-network
 
   adminer:
     image: adminer
     environment:
-      ADMINER_DEFAULT_SERVER: zgl
+      ADMINER_DEFAULT_SERVER: mysql
     hostname: adminer
     container_name: adminer
     restart: always
@@ -41,3 +45,7 @@ services:
 
 volumes:
   zgl-db-data:
+
+networks:
+  zgl-network:
+    driver: bridge

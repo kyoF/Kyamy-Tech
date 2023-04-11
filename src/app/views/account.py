@@ -29,11 +29,11 @@ def login():
                 return show_top(session.get('name'), session.get('undergraduate'))
         except ValueError:
             flash('適切なユーザIDを入力してください', 'error')
-    return render_template('login/login.html')
+    return render_template('account/login.html')
 
 @blueprint.route('/logout')
 def logout():
     session.pop('logged_in', None)
     session.clear()
     flash('ログアウトしました。', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('account.login'))

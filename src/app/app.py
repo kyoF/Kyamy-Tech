@@ -4,7 +4,7 @@ from database import init_db
 from views import account, signup, search, carts, details, admin, top
 
 #Flaskを定義
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 app.config.from_object('config.DevelopmentConfig')
 
 init_db(app)

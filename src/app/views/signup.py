@@ -39,4 +39,4 @@ def create():
             flash('入力した情報を再度確認してください', 'error')
             return render_template('signup/signup.html')
         flash('アカウントが作成されました', 'success')
-        return render_template('login/login.html')    
+        return render_template('account/login.html')    
